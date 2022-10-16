@@ -1,17 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+
+class Car {
+  constructor(name) {
+    this.brand = name;
+  }
+  present() {
+    return  "I have a " + this.brand;
+  }
+}
+class Model extends Car {
+  constructor(name, mod) {
+    super(name);
+    this.model = mod;
+  }
+  show() {
+    return this.present() + ", it is a " + this.model
+  }
+}
+
+const myArray = ["apples", "bannanas", "oranges", "omg fruits"];
+const myList = myArray.map((item) => <p>{item}</p>);
+
+const mycar = new Model("Ford", "Mustang")
+
+const myElement = <h1>{myList}</h1>;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+root.render(myElement);
